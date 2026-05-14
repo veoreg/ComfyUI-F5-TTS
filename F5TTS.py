@@ -343,7 +343,7 @@ class F5TTSCreate:
             final_wave = np.concatenate(generated_audio_segments)
 
         # waveform, sample_rate = torchaudio.load(wave_file.name)
-        waveform = torch.from_numpy(final_wave).unsqueeze(0)
+        waveform = torch.from_numpy(final_wave).unsqueeze(0).float()  # cast float64→float32
         audio = {
             "waveform": waveform.unsqueeze(0),
             "sample_rate": frame_rate
